@@ -9,17 +9,18 @@ from os import path
 
 
 def read_json(file_path):  # provide json file path
-    with open(file_path) as json_file: # open as json file  # not working
+    with open(file_path) as json_file: # open as json file
         json_dict=json.load(json_file)   # pass the json file
         return json.dumps(json_dict)  # key value json object returned
 
-file_path=read_json("/Users/vandana/PycharmProjects/Python9Ex/data/super_smash_bros")
+file_path=read_json("/Users/vandana/PycharmProjects/Python9Ex/vandu.json")
 
 #partB
 def read_all_files(json_files_path):  # path directory
     json_files=[]  # returning json file
-    for file_name in os.listdir(os.getcwd() + path):
-        path_to_json=os.getcwd() +path +'/' + file_name  #  path
+    #for file_name in os.listdir(os.getcwd() + path):
+    for file_name in os.listdir(str(os.getcwd() + json_files_path)) :
+        path_to_json=os.getcwd() +json_files_path +'/' + file_name  #  path
         json_obj=read_json(path_to_json) #read json
         json_obj.append(json_obj)
     return json_obj  # list of json_files
